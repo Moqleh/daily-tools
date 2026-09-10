@@ -8,6 +8,33 @@
 </head>
 <body>
   <div id="root"></div>
+  <script>
+    (()=>{
+      const external={
+        'ضغط الصور':'https://squoosh.app/','Compress images':'https://squoosh.app/',
+        'تغيير الحجم':'https://www.iloveimg.com/resize-image','Resize images':'https://www.iloveimg.com/resize-image',
+        'إزالة الخلفية':'https://www.remove.bg/','Remove background':'https://www.remove.bg/',
+        'تحويل الصيغ':'https://cloudconvert.com/image-converter','Convert formats':'https://cloudconvert.com/image-converter',
+        'تصميم الصور':'https://www.canva.com/','Image design':'https://www.canva.com/',
+        'قص الفيديو':'https://www.canva.com/features/video-trimmer/','Trim video':'https://www.canva.com/features/video-trimmer/',
+        'ضغط الفيديو':'https://www.freeconvert.com/video-compressor','Compress video':'https://www.freeconvert.com/video-compressor',
+        'تحويل الصيغة':'https://cloudconvert.com/video-converter','Convert format':'https://cloudconvert.com/video-converter',
+        'تحرير الفيديو':'https://www.canva.com/video-editor/','Video editing':'https://www.canva.com/video-editor/',
+        'تسجيل الشاشة':'https://www.loom.com/screen-recorder','Screen recording':'https://www.loom.com/screen-recorder',
+        'تعليم':'https://www.khanacademy.org/','Education':'https://www.khanacademy.org/',
+        'إنتاجية':'https://www.notion.com/','Productivity':'https://www.notion.com/',
+        'سفر':'https://www.google.com/travel/','Travel':'https://www.google.com/travel/',
+        'تقنية':'https://developer.mozilla.org/','Technology':'https://developer.mozilla.org/',
+        'مراجع':'https://www.wikipedia.org/','References':'https://www.wikipedia.org/'
+      };
+      document.addEventListener('click',e=>{
+        const b=e.target.closest('.subgrid button'); if(!b)return;
+        const label=[...b.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim();
+        const url=external[label]; if(!url)return;
+        e.preventDefault(); e.stopImmediatePropagation(); window.open(url,'_blank','noopener,noreferrer');
+      },true);
+    })();
+  </script>
   <script type="module" src="./src/main.tsx"></script>
 </body>
 </html>
