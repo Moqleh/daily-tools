@@ -9,31 +9,37 @@
 <body>
   <div id="root"></div>
   <script>
-    (()=>{
-      const external={
-        'ضغط الصور':'https://squoosh.app/','Compress images':'https://squoosh.app/',
-        'تغيير الحجم':'https://www.iloveimg.com/resize-image','Resize images':'https://www.iloveimg.com/resize-image',
-        'إزالة الخلفية':'https://www.remove.bg/','Remove background':'https://www.remove.bg/',
-        'تحويل الصيغ':'https://cloudconvert.com/image-converter','Convert formats':'https://cloudconvert.com/image-converter',
-        'تصميم الصور':'https://www.canva.com/','Image design':'https://www.canva.com/',
-        'قص الفيديو':'https://www.canva.com/features/video-trimmer/','Trim video':'https://www.canva.com/features/video-trimmer/',
-        'ضغط الفيديو':'https://www.freeconvert.com/video-compressor','Compress video':'https://www.freeconvert.com/video-compressor',
-        'تحويل الصيغة':'https://cloudconvert.com/video-converter','Convert format':'https://cloudconvert.com/video-converter',
-        'تحرير الفيديو':'https://www.canva.com/video-editor/','Video editing':'https://www.canva.com/video-editor/',
-        'تسجيل الشاشة':'https://www.loom.com/screen-recorder','Screen recording':'https://www.loom.com/screen-recorder',
-        'تعليم':'https://www.khanacademy.org/','Education':'https://www.khanacademy.org/',
-        'إنتاجية':'https://www.notion.com/','Productivity':'https://www.notion.com/',
-        'سفر':'https://www.google.com/travel/','Travel':'https://www.google.com/travel/',
-        'تقنية':'https://developer.mozilla.org/','Technology':'https://developer.mozilla.org/',
-        'مراجع':'https://www.wikipedia.org/','References':'https://www.wikipedia.org/'
-      };
-      document.addEventListener('click',e=>{
-        const b=e.target.closest('.subgrid button'); if(!b)return;
-        const label=[...b.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim();
-        const url=external[label]; if(!url)return;
-        e.preventDefault(); e.stopImmediatePropagation(); window.open(url,'_blank','noopener,noreferrer');
-      },true);
-    })();
+  (()=>{
+    const ext={
+      'ضغط الصور':'https://squoosh.app/','Compress images':'https://squoosh.app/','تغيير الحجم':'https://www.iloveimg.com/resize-image','Resize images':'https://www.iloveimg.com/resize-image','إزالة الخلفية':'https://www.remove.bg/','Remove background':'https://www.remove.bg/','تحويل الصيغ':'https://cloudconvert.com/image-converter','Convert formats':'https://cloudconvert.com/image-converter','تصميم الصور':'https://www.canva.com/','Image design':'https://www.canva.com/','قص الفيديو':'https://www.canva.com/features/video-trimmer/','Trim video':'https://www.canva.com/features/video-trimmer/','ضغط الفيديو':'https://www.freeconvert.com/video-compressor','Compress video':'https://www.freeconvert.com/video-compressor','تحويل الصيغة':'https://cloudconvert.com/video-converter','Convert format':'https://cloudconvert.com/video-converter','تحرير الفيديو':'https://www.canva.com/video-editor/','Video editing':'https://www.canva.com/video-editor/','تسجيل الشاشة':'https://www.loom.com/screen-recorder','Screen recording':'https://www.loom.com/screen-recorder','تعليم':'https://www.khanacademy.org/','Education':'https://www.khanacademy.org/','إنتاجية':'https://www.notion.com/','Productivity':'https://www.notion.com/','سفر':'https://www.google.com/travel/','Travel':'https://www.google.com/travel/','تقنية':'https://developer.mozilla.org/','Technology':'https://developer.mozilla.org/','مراجع':'https://www.wikipedia.org/','References':'https://www.wikipedia.org/'
+    };
+    const qr=['QR لرابط','QR لنص','QR لهاتف','QR لبريد','QR لـ Wi-Fi','QR for link','QR for text','QR for phone','QR for email','QR for Wi-Fi'];
+    const local=new Set(['عد تنازلي','Countdown','مؤقت','Timer','ساعة إيقاف','Stopwatch','مدة زمنية','Duration','قائمة سفر','Travel checklist','تقسيم الميزانية','Budget split','الإيجار الشهري/السنوي','Monthly/annual rent','مساحة العقار','Property area','ميزانية سكن','Housing budget','رصيد الإجازات','Leave balance','بدل الإجازة','Leave pay','نهاية الخدمة','End of service','مؤقت مذاكرة','Study timer','Pace','مؤقت مطبخ','Kitchen timer','XO','Tic Tac Toe','عداد أيام','Day counter','مؤقت تركيز','Focus timer']);
+    const ar=()=>document.documentElement.dir==='rtl';
+    const n=(m)=>Number(prompt(m)||0), p=(m)=>prompt(m)||'', out=(v)=>alert(String(v));
+    function timer(label){const sec=n(ar()?'أدخل المدة بالثواني':'Enter seconds');if(sec>0){out(ar()?'بدأ المؤقت، يمكنك متابعة استخدام الصفحة.':'Timer started; you can keep using the page.');setTimeout(()=>out(ar()?'انتهى الوقت ⏰':'Time is up ⏰'),sec*1000)}}
+    function run(label){
+      if(ext[label]){window.open(ext[label],'_blank','noopener,noreferrer');return true}
+      if(qr.includes(label)){window.open('https://www.qrcode-monkey.com/','_blank','noopener,noreferrer');return true}
+      if(!local.has(label))return false;
+      if(['مؤقت','Timer','مؤقت مذاكرة','Study timer','مؤقت مطبخ','Kitchen timer','مؤقت تركيز','Focus timer','عد تنازلي','Countdown'].includes(label)){timer(label);return true}
+      if(['ساعة إيقاف','Stopwatch'].includes(label)){const start=Date.now();out(ar()?'بدأت ساعة الإيقاف. اضغط موافق عندما تريد إيقافها.':'Stopwatch started. Press OK when you want to stop.');out(((Date.now()-start)/1000).toFixed(2)+(ar()?' ثانية':' seconds'));return true}
+      if(['مدة زمنية','Duration'].includes(label)){const a=p(ar()?'وقت البداية HH:MM':'Start HH:MM'),b=p(ar()?'وقت النهاية HH:MM':'End HH:MM');const cv=s=>{const [h,m]=s.split(':').map(Number);return h*60+m};let d=cv(b)-cv(a);if(d<0)d+=1440;out(Math.floor(d/60)+(ar()?' ساعة و ':' h ')+(d%60)+(ar()?' دقيقة':' min'));return true}
+      if(['قائمة سفر','Travel checklist'].includes(label)){out(ar()?'✓ الهوية/الجواز\n✓ الحجوزات\n✓ الشاحن\n✓ الأدوية الشخصية\n✓ الملابس\n✓ وسائل الدفع\n✓ عنوان السكن':'✓ ID/passport\n✓ Reservations\n✓ Charger\n✓ Personal medication\n✓ Clothes\n✓ Payment methods\n✓ Accommodation address');return true}
+      if(['تقسيم الميزانية','Budget split'].includes(label)){const x=n(ar()?'أدخل الدخل الشهري':'Monthly income');out((ar()?'احتياجات 50%: ':'Needs 50%: ')+(x*.5).toFixed(2)+'\n'+(ar()?'رغبات 30%: ':'Wants 30%: ')+(x*.3).toFixed(2)+'\n'+(ar()?'ادخار 20%: ':'Savings 20%: ')+(x*.2).toFixed(2));return true}
+      if(['الإيجار الشهري/السنوي','Monthly/annual rent'].includes(label)){const x=n(ar()?'الإيجار الشهري':'Monthly rent');out((x*12).toFixed(2)+(ar()?' سنوياً':' annually'));return true}
+      if(['مساحة العقار','Property area'].includes(label)){const l=n(ar()?'الطول بالمتر':'Length m'),w=n(ar()?'العرض بالمتر':'Width m');out((l*w).toFixed(2)+' m²');return true}
+      if(['ميزانية سكن','Housing budget'].includes(label)){const income=n(ar()?'الدخل الشهري':'Monthly income'),pct=n(ar()?'النسبة المخصصة للسكن %':'Housing percentage %')||30;out((income*pct/100).toFixed(2));return true}
+      if(['رصيد الإجازات','Leave balance'].includes(label)){const total=n(ar()?'الرصيد السنوي بالأيام':'Annual leave days'),used=n(ar()?'الأيام المستخدمة':'Days used');out(Math.max(0,total-used)+(ar()?' يوم متبقٍ':' days remaining'));return true}
+      if(['بدل الإجازة','Leave pay'].includes(label)){const salary=n(ar()?'الراتب الشهري':'Monthly salary'),days=n(ar()?'أيام الإجازة':'Leave days');out((salary/30*days).toFixed(2));return true}
+      if(['نهاية الخدمة','End of service'].includes(label)){const salary=n(ar()?'الراتب الشهري':'Monthly salary'),years=n(ar()?'سنوات الخدمة':'Years of service'),factor=n(ar()?'معامل الاستحقاق السنوي (مثال 0.5)':'Annual entitlement factor (e.g. 0.5)')||.5;out((salary*years*factor).toFixed(2)+(ar()?' — تقدير يدوي غير قانوني':' — manual estimate, not legal advice'));return true}
+      if(label==='Pace'){const km=n('Distance km'),min=n('Time minutes');if(km)out((min/km).toFixed(2)+' min/km');return true}
+      if(label==='XO'||label==='Tic Tac Toe'){const cells=['1','2','3','4','5','6','7','8','9'];let turn='X';for(let z=0;z<9;z++){const pick=n((ar()?'اختر خانة 1-9':'Choose cell 1-9')+'\n'+cells.slice(0,3).join(' | ')+'\n'+cells.slice(3,6).join(' | ')+'\n'+cells.slice(6).join(' | '))-1;if(pick<0||pick>8||['X','O'].includes(cells[pick])){z--;continue}cells[pick]=turn;const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];if(wins.some(v=>v.every(i=>cells[i]===turn))){out((ar()?'الفائز: ':'Winner: ')+turn);return true}turn=turn==='X'?'O':'X'}out(ar()?'تعادل':'Draw');return true}
+      if(['عداد أيام','Day counter'].includes(label)){const d=new Date(p(ar()?'أدخل التاريخ YYYY-MM-DD':'Enter date YYYY-MM-DD'));if(!isNaN(+d))out(Math.ceil((+d-Date.now())/86400000)+(ar()?' يوم':' days'));return true}
+      return true;
+    }
+    document.addEventListener('click',e=>{const b=e.target.closest('.subgrid button');if(!b)return;const label=[...b.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent).join('').trim();if(run(label)){e.preventDefault();e.stopImmediatePropagation()}},true);
+  })();
   </script>
   <script type="module" src="./src/main.tsx"></script>
 </body>
