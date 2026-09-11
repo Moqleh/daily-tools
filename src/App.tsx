@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Calculator, CalendarDays, Clock3, Ruler, Car, PiggyBank, House, BriefcaseBusiness, FileText, GraduationCap, HeartPulse, ChefHat, QrCode, ShieldCheck, Dices, Gamepad2, Wrench, Image, Video, Link as LinkIcon, Search, X, Info, Lightbulb, Globe2, CircleHelp } from 'lucide-react';
+import { Calculator, CalendarDays, Clock3, Ruler, Car, Coins, House, BriefcaseBusiness, FileText, GraduationCap, HeartPulse, ChefHat, QrCode, ShieldCheck, Dices, Gamepad2, Wrench, Image, Video, Link as LinkIcon, Search, X, Info, Lightbulb, Globe2, CircleHelp } from 'lucide-react';
 type Lang='ar'|'en'; type Category={ar:string;en:string;descAr:string;descEn:string;toolsAr:string[];toolsEn:string[];icon:any};
 const data:Category[]=[
 ['الحاسبات','Calculators','العمر، النسبة، الخصم، الوقود','Age, percentage, discount and fuel',['حاسبة العمر','النسبة المئوية','الخصم','فرق تاريخين','تقسيم الفاتورة','تكلفة الوقود'],['Age calculator','Percentage','Discount','Date difference','Split bill','Fuel cost'],Calculator],
@@ -7,7 +7,7 @@ const data:Category[]=[
 ['الوقت والساعة','Time & Clock','الوقت والمؤقتات','Time and timers',['ساعة رقمية','مؤقت','ساعة إيقاف','تحويل ساعات ودقائق','مدة زمنية'],['Digital clock','Timer','Stopwatch','Hours & minutes','Duration'],Clock3],
 ['تحويل الوحدات','Unit Conversion','الطول والوزن والمساحة','Length, weight and area',['الطول','الوزن','المساحة','الحجم','الحرارة','السرعة'],['Length','Weight','Area','Volume','Temperature','Speed'],Ruler],
 ['السيارة والسفر','Car & Travel','حسابات مفيدة للمسافر','Useful travel calculations',['استهلاك الوقود','تكلفة الرحلة','كم/لتر','لتر/100كم','ميل/كم','قائمة سفر'],['Fuel consumption','Trip cost','Km/L','L/100km','Miles/Km','Travel checklist'],Car],
-['المال والادخار','Money & Savings','خطط وحسابات مالية بسيطة','Simple financial planning',['هدف الادخار','فائدة بسيطة','فائدة مركبة','ROI','تقسيم الميزانية','شهري/سنوي'],['Savings goal','Simple interest','Compound interest','ROI','Budget split','Monthly/Annual'],PiggyBank],
+['المال والادخار','Money & Savings','خطط وحسابات مالية بسيطة','Simple financial planning',['هدف الادخار','فائدة بسيطة','فائدة مركبة','ROI','تقسيم الميزانية','شهري/سنوي'],['Savings goal','Simple interest','Compound interest','ROI','Budget split','Monthly/Annual'],Coins],
 ['العقار والسكن','Property & Housing','حسابات عقارية','Property calculations',['الإيجار الشهري/السنوي','سعر المتر','مساحة العقار','تقسيم الإيجار','دفعة أولى','ميزانية سكن'],['Monthly/annual rent','Price per meter','Property area','Split rent','Down payment','Housing budget'],House],
 ['الموظف والراتب','Employee & Salary','حسابات الموظفين والإجازات','Salary and leave calculations',['الراتب الشهري/السنوي','زيادة الراتب','العمل الإضافي','رصيد الإجازات','بدل الإجازة','نهاية الخدمة'],['Monthly/annual salary','Salary increase','Overtime','Leave balance','Leave pay','End of service'],BriefcaseBusiness],
 ['أدوات النصوص','Text Tools','معالجة النص داخل جهازك','Local text utilities',['عد الكلمات','عد الحروف','إزالة الفراغات','ترتيب الأسطر','إزالة التكرار','وقت القراءة'],['Word count','Character count','Trim spaces','Sort lines','Remove duplicates','Reading time'],FileText],
