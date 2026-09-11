@@ -19,6 +19,7 @@ import './external-link-guard';
 import './settings-enhancement';
 import './settings-icons.css';
 import './world-class.css';
+import './traffic-and-ads';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
