@@ -11,7 +11,7 @@ function add(){
   const ad=document.createElement('aside');
   ad.className='dt-ad-slot';
   ad.setAttribute('aria-label',ar()?'مساحة إعلانية':'Advertisement area');
-  ad.innerHTML=`<div><b>${ar()?'مساحة إعلانية':'Advertisement'}</b><small>${ar()?'مكان مخصص لإعلان مستقبلي بدون إزعاج تجربة الاستخدام':'Reserved for a future ad without interrupting the tools'}</small></div>`;
+  ad.innerHTML=`<div><b>${ar()?'مساحة إعلانية':'Advertisement'}</b><small>${ar()?'مكان مخصص لإعلان مستقبلي':'Reserved for a future ad'}</small></div>`;
   footer.parentElement?.insertBefore(ad,footer);
 }
 
