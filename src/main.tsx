@@ -11,6 +11,7 @@ import './components/tools/date-tools';
 import './components/tools/conversion-fixes';
 import './components/tools/legacy-form-launcher';
 import './game-fixes';
+import './settings-enhancement';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
