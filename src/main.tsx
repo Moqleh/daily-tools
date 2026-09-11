@@ -12,6 +12,7 @@ import './components/tools/time-tools';
 import './components/tools/conversion-fixes';
 import './components/tools/legacy-form-launcher';
 import './game-fixes';
+import './external-link-guard';
 import './settings-enhancement';
 import './settings-icons.css';
 
