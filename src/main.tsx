@@ -12,6 +12,7 @@ import './components/tools/conversion-fixes';
 import './components/tools/legacy-form-launcher';
 import './game-fixes';
 import './settings-enhancement';
+import './settings-icons.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
