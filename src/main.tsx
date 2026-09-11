@@ -8,6 +8,7 @@ import './components/tools/shared.css';
 import './native-dialogs';
 import './components/calculators/calculator-launcher';
 import './components/tools/date-tools';
+import './components/tools/time-tools';
 import './components/tools/conversion-fixes';
 import './components/tools/legacy-form-launcher';
 import './game-fixes';
