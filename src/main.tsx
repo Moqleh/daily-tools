@@ -4,6 +4,7 @@ import App from './App';
 import './index.css';
 import './reference.css';
 import './mobile-clarity.css';
+import './game-fixes';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
