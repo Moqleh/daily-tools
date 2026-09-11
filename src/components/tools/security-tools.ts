@@ -1,0 +1,15 @@
+const AR=()=>document.documentElement.dir==='rtl';
+const labelOf=(el:Element)=>Array.from(el.childNodes).filter(n=>n.nodeType===Node.TEXT_NODE).map(n=>n.textContent||'').join('').trim();
+const labels=new Set(['مولد كلمة مرور','Password generator','فحص القوة محلياً','Password strength','مولد PIN','PIN generator','عبارة مرور','Passphrase','نصائح حماية','Protection tips']);
+const ask=(m:string,d='')=>(window as any).dtPrompt(m,d) as Promise<string|null>;
+const show=(m:string)=>(window as any).dtAlert(m) as Promise<void>;
+const random=(chars:string,n:number)=>{const a=new Uint32Array(n);crypto.getRandomValues(a);return Array.from(a,x=>chars[x%chars.length]).join('')};
+async function run(label:string){const ar=AR();
+ if(label==='مولد كلمة مرور'||label==='Password generator'){const v=await ask(ar?'كم حرفاً تريد؟ (من 8 إلى 64)':'Password length? (8–64)','16');if(v===null)return;const n=Math.max(8,Math.min(64,Number(v)||16));const chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%^&*_-+=';await show((ar?'كلمة المرور المقترحة:\n':'Generated password:\n')+random(chars,n));return}
+ if(label==='مولد PIN'||label==='PIN generator'){const v=await ask(ar?'عدد أرقام PIN (من 4 إلى 12)':'PIN length (4–12)','6');if(v===null)return;const n=Math.max(4,Math.min(12,Number(v)||6));await show((ar?'PIN المقترح: ':'Generated PIN: ')+random('0123456789',n));return}
+ if(label==='فحص القوة محلياً'||label==='Password strength'){const p=await ask(ar?'أدخل كلمة المرور لفحصها محلياً على جهازك':'Enter a password to check locally');if(p===null)return;let s=0;if(p.length>=12)s++;if(p.length>=16)s++;if(/[a-z]/.test(p)&&/[A-Z]/.test(p))s++;if(/\d/.test(p))s++;if(/[^A-Za-z0-9]/.test(p))s++;const level=s<=1?(ar?'ضعيفة':'Weak'):s<=3?(ar?'متوسطة':'Medium'):(ar?'قوية':'Strong');await show(`${ar?'القوة':'Strength'}: ${level}\n${ar?'الطول':'Length'}: ${p.length}`);return}
+ if(label==='عبارة مرور'||label==='Passphrase'){const words=ar?['قمر','نهر','سحاب','كتاب','جبل','مفتاح','بحر','نجمة','طريق','شجرة','صباح','نافذة']:['moon','river','cloud','book','mountain','key','sea','star','road','tree','morning','window'];const a=new Uint32Array(4);crypto.getRandomValues(a);await show((ar?'عبارة مرور مقترحة:\n':'Suggested passphrase:\n')+Array.from(a,x=>words[x%words.length]).join('-')+'-'+random('23456789',2));return}
+ await show(ar?'نصائح حماية:\n• استخدم كلمة مرور مختلفة لكل حساب.\n• فعّل التحقق بخطوتين متى توفر.\n• لا ترسل كلمات المرور أو رموز التحقق لأي شخص.\n• استخدم مدير كلمات مرور موثوقاً.\n• حدّث جهازك ومتصفحك باستمرار.':'Protection tips:\n• Use a unique password for every account.\n• Enable two-factor authentication when available.\n• Never share passwords or verification codes.\n• Use a trusted password manager.\n• Keep your device and browser updated.');
+}
+window.addEventListener('click',e=>{const target=e.target as Element|null,btn=target?.closest('.subgrid button');if(!btn)return;const label=labelOf(btn);if(!labels.has(label))return;e.preventDefault();e.stopImmediatePropagation();void run(label)},true);
+export {};
