@@ -1,0 +1,20 @@
+/* Settings: icon-first dashboard, not a list */
+.dt-settings main{padding:22px 18px 28px}
+.dt-settings section{margin:0 0 28px}
+.dt-settings section>h3{font-size:13px;font-weight:900;letter-spacing:0;color:#526b82;margin:0 4px 12px;text-transform:none}
+.dt-settings .group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;background:transparent;border:0;border-radius:0;overflow:visible;box-shadow:none}
+.dt-settings .row,.dt-settings button.row{min-height:142px;padding:17px 12px;border:1px solid #dbe8f1!important;border-radius:22px;background:#fff;box-shadow:0 8px 22px rgba(11,49,91,.055);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:9px;text-align:center!important;position:relative;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.dt-settings button.row:active{transform:scale(.975);box-shadow:0 4px 12px rgba(11,49,91,.07)}
+.dt-settings .row .ico{width:54px;height:54px;border-radius:18px;font-size:22px;background:linear-gradient(145deg,#eef8ff,#dff2ff);box-shadow:inset 0 0 0 1px #d6ebf8;color:var(--dt-accent)}
+.dt-settings .row .label{flex:0;font-size:15px;font-weight:900;line-height:1.35;width:100%}
+.dt-settings .row small{font-size:11px;line-height:1.45;margin-top:5px;display:block;max-width:220px;margin-inline:auto}
+.dt-settings .row>span:last-child:not(.label):not(.ico),.dt-settings .row>b{position:absolute;top:12px;inset-inline-end:12px;font-size:12px;color:#6f8598}
+.dt-settings .dt-switch{position:absolute;top:13px;inset-inline-end:13px;width:43px;height:25px}
+.dt-settings .dt-switch i{width:19px;height:19px}
+.dt-settings .dt-radio{position:absolute!important;top:13px!important;inset-inline-end:13px!important;width:22px!important;height:22px!important;font-size:12px!important}
+.dt-settings .dt-colors{justify-content:center;margin-top:10px}
+.dt-settings .dt-color{width:29px;height:29px}
+.dt-settings .dt-danger{grid-column:1/-1;min-height:120px!important}
+.dt-settings .dt-danger .ico{background:#fff0ee;color:#d92d20;box-shadow:inset 0 0 0 1px #ffd9d4}
+@media(min-width:620px){.dt-settings .group{grid-template-columns:repeat(3,minmax(0,1fr))}.dt-settings .row,.dt-settings button.row{min-height:150px}.dt-settings .dt-danger{grid-column:auto}}
+@media(max-width:370px){.dt-settings .group{gap:9px}.dt-settings .row,.dt-settings button.row{min-height:132px;padding:14px 9px}.dt-settings .row .ico{width:48px;height:48px;border-radius:16px}.dt-settings .row .label{font-size:14px}}
