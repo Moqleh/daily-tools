@@ -6,10 +6,10 @@ import './reference.css';
 import './mobile-clarity.css';
 import './components/tools/shared.css';
 import './native-dialogs';
-import './components/tools/legacy-form-launcher';
-import './components/tools/conversion-fixes';
-import './game-fixes';
 import './components/calculators/calculator-launcher';
+import './components/tools/conversion-fixes';
+import './components/tools/legacy-form-launcher';
+import './game-fixes';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
