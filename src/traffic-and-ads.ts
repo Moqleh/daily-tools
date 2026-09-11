@@ -1,7 +1,22 @@
 const ar=()=>document.documentElement.dir==='rtl';
-const css=document.createElement('style');css.textContent=`.dt-ad-slot,.dt-visit-box{box-sizing:border-box;width:min(94%,1180px);margin:22px auto;border-radius:22px}.dt-ad-slot{min-height:112px;border:1px dashed #9fc7e4;background:rgba(255,255,255,.72);display:grid;place-items:center;text-align:center;padding:18px;color:#6b8298}.dt-ad-slot b{display:block;color:#285779;font-size:15px;margin-bottom:4px}.dt-ad-slot small{font-size:12px}.dt-visit-box{background:rgba(255,255,255,.88);border:1px solid #d9eaf5;padding:15px 20px;display:flex;align-items:center;justify-content:center;gap:9px;color:#486985;font-size:14px}.dt-visit-box strong{color:#0b5ea8;font-size:18px}.dt-visit-box svg{color:#147dcc}@media(max-width:650px){.dt-ad-slot{min-height:96px;margin:16px auto}.dt-visit-box{margin:14px auto 20px}}`;document.head.appendChild(css);
-let counted=false;
-function updateCounter(el:HTMLElement){if(counted)return;counted=true;const key='dt-page-visits';let n=Number(localStorage.getItem(key)||'0');n=Number.isFinite(n)?n+1:1;localStorage.setItem(key,String(n));el.textContent=n.toLocaleString('en-US')}
-function add(){if(document.querySelector('.dt-ad-slot'))return;const footer=document.querySelector('footer');if(!footer)return;const ad=document.createElement('aside');ad.className='dt-ad-slot';ad.setAttribute('aria-label',ar()?'مساحة إعلانية':'Advertisement area');ad.innerHTML=`<div><b>${ar()?'مساحة إعلانية':'Advertisement'}</b><small>${ar()?'مكان مخصص لإعلان مستقبلي بدون إزعاج تجربة الاستخدام':'Reserved for a future ad without interrupting the tools'}</small></div>`;footer.parentElement?.insertBefore(ad,footer);const visits=document.createElement('div');visits.className='dt-visit-box';visits.innerHTML=`<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><span>${ar()?'عدد مرات فتح الموقع:':'Site visits:'}</span><strong>0</strong>`;footer.parentElement?.insertBefore(visits,footer);updateCounter(visits.querySelector('strong') as HTMLElement)}
-const observer=new MutationObserver(()=>add());observer.observe(document.body,{childList:true,subtree:true});add();
+
+const css=document.createElement('style');
+css.textContent=`.dt-ad-slot{box-sizing:border-box;width:min(94%,1180px);margin:22px auto;border-radius:22px;min-height:112px;border:1px dashed #9fc7e4;background:rgba(255,255,255,.72);display:grid;place-items:center;text-align:center;padding:18px;color:#6b8298}.dt-ad-slot b{display:block;color:#285779;font-size:15px;margin-bottom:4px}.dt-ad-slot small{font-size:12px}@media(max-width:650px){.dt-ad-slot{min-height:96px;margin:16px auto}}`;
+document.head.appendChild(css);
+
+function add(){
+  if(document.querySelector('.dt-ad-slot')) return;
+  const footer=document.querySelector('footer');
+  if(!footer) return;
+  const ad=document.createElement('aside');
+  ad.className='dt-ad-slot';
+  ad.setAttribute('aria-label',ar()?'مساحة إعلانية':'Advertisement area');
+  ad.innerHTML=`<div><b>${ar()?'مساحة إعلانية':'Advertisement'}</b><small>${ar()?'مكان مخصص لإعلان مستقبلي بدون إزعاج تجربة الاستخدام':'Reserved for a future ad without interrupting the tools'}</small></div>`;
+  footer.parentElement?.insertBefore(ad,footer);
+}
+
+const observer=new MutationObserver(()=>add());
+observer.observe(document.body,{childList:true,subtree:true});
+add();
+
 export {};
