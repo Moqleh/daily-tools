@@ -15,6 +15,7 @@ import './game-fixes';
 import './external-link-guard';
 import './settings-enhancement';
 import './settings-icons.css';
+import './world-class.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
