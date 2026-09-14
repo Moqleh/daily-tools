@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import './engagement';
 import './index.css';
 import './reference.css';
 import './mobile-clarity.css';
@@ -20,9 +21,14 @@ import './settings-enhancement';
 import './settings-icons.css';
 import './world-class.css';
 import './traffic-and-ads';
+import './engagement.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
   </StrictMode>
 );
+
+if('serviceWorker' in navigator){
+ window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+}
