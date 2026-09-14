@@ -25,7 +25,6 @@ function showLegal(key:LegalKey){
 
 function enhanceFooter(){
  const footer=document.querySelector('footer');if(!footer)return;
- if(footer.dataset.actionsReady==='1')return;footer.dataset.actionsReady='1';
  const contact=[...footer.querySelectorAll('div')].find(x=>x.querySelector('a[href^="mailto:"]'));
  if(contact&&!contact.querySelector('.dt-whatsapp')){
   const wa=document.createElement('a');wa.className='dt-whatsapp';wa.href='https://wa.me/962799880062';wa.target='_blank';wa.rel='noopener noreferrer';wa.textContent=isAr()?'واتساب: 00962799880062':'WhatsApp: +962 79 988 0062';contact.appendChild(wa);
