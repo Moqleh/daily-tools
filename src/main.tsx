@@ -17,6 +17,7 @@ import './components/tools/security-tools';
 import './components/tools/text-tools';
 import './game-fixes';
 import './external-link-guard';
+import './tool-fallback';
 import './settings-enhancement';
 import './settings-icons.css';
 import './world-class.css';
