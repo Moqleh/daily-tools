@@ -23,6 +23,10 @@ import './world-class.css';
 import './traffic-and-ads';
 import './engagement.css';
 
+if(!document.querySelector('link[rel="manifest"]')){
+ const manifest=document.createElement('link');manifest.rel='manifest';manifest.href='./manifest.webmanifest';document.head.appendChild(manifest);
+}
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
