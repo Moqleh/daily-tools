@@ -22,6 +22,7 @@ import './settings-enhancement';
 import './settings-icons.css';
 import './world-class.css';
 import './traffic-and-ads';
+import './footer-actions';
 import './engagement.css';
 
 if(!document.querySelector('link[rel="manifest"]')){
