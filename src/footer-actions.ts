@@ -71,7 +71,7 @@ function enhanceFooter(){
 }
 
 const css=document.createElement('style');css.textContent=`
-footer.dt-footer-layout{grid-template-columns:repeat(3,minmax(220px,1fr))!important;grid-template-areas:'wa contact designer' 'legal legal legal'!important;column-gap:42px!important;row-gap:28px!important;align-items:center!important}
+footer.dt-footer-layout{grid-template-columns:repeat(3,minmax(220px,1fr))!important;grid-template-areas:'designer contact wa' 'legal legal legal'!important;column-gap:42px!important;row-gap:28px!important;align-items:center!important}
 footer.dt-footer-layout>.dt-wa-box{grid-area:wa!important;display:flex!important;align-items:center!important;justify-content:center!important;min-width:0!important}
 footer.dt-footer-layout>.dt-contact{grid-area:contact!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;gap:6px!important;min-width:0!important}
 footer.dt-footer-layout>.dt-designer{grid-area:designer!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:18px!important;text-align:center!important;min-width:0!important}
