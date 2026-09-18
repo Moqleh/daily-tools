@@ -1,5 +1,4 @@
 const AR=()=>document.documentElement.dir==='rtl';
-const labelOf=(el:Element)=>Array.from(el.childNodes).filter(n=>n.nodeType===Node.TEXT_NODE).map(n=>n.textContent||'').join('').trim();
 const labels=new Set(['مولد كلمة مرور','Password generator','فحص القوة محلياً','Password strength','مولد PIN','PIN generator','عبارة مرور','Passphrase','نصائح حماية','Protection tips']);
 const ask=(m:string,d='')=>(window as any).dtPrompt(m,d) as Promise<string|null>;
 const show=(m:string)=>(window as any).dtAlert(m) as Promise<void>;
@@ -11,5 +10,5 @@ async function run(label:string){const ar=AR();
  if(label==='عبارة مرور'||label==='Passphrase'){const words=ar?['قمر','نهر','سحاب','كتاب','جبل','مفتاح','بحر','نجمة','طريق','شجرة','صباح','نافذة']:['moon','river','cloud','book','mountain','key','sea','star','road','tree','morning','window'];const a=new Uint32Array(4);crypto.getRandomValues(a);await show((ar?'عبارة مرور مقترحة:\n':'Suggested passphrase:\n')+Array.from(a,x=>words[x%words.length]).join('-')+'-'+random('23456789',2));return}
  await show(ar?'نصائح حماية:\n• استخدم كلمة مرور مختلفة لكل حساب.\n• فعّل التحقق بخطوتين متى توفر.\n• لا ترسل كلمات المرور أو رموز التحقق لأي شخص.\n• استخدم مدير كلمات مرور موثوقاً.\n• حدّث جهازك ومتصفحك باستمرار.':'Protection tips:\n• Use a unique password for every account.\n• Enable two-factor authentication when available.\n• Never share passwords or verification codes.\n• Use a trusted password manager.\n• Keep your device and browser updated.');
 }
-window.addEventListener('click',e=>{const target=e.target as Element|null,btn=target?.closest('.subgrid button');if(!btn)return;const label=labelOf(btn);if(!labels.has(label))return;e.preventDefault();e.stopImmediatePropagation();void run(label)},true);
+window.addEventListener('dailytools:launch',e=>{const label=(e as CustomEvent<{label?:string}>).detail?.label||'';if(!labels.has(label))return;e.preventDefault();void run(label)});
 export {};
