@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import './engagement';
 import './index.css';
+import './daily-assistant.css';
 import './reference.css';
 import './mobile-clarity.css';
 import './components/tools/shared.css';
