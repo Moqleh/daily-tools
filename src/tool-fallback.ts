@@ -1,9 +1,6 @@
-const directText=(el:Element)=>Array.from(el.childNodes).filter(n=>n.nodeType===Node.TEXT_NODE).map(n=>n.textContent||'').join('').trim();
-document.addEventListener('click',e=>{
- const target=e.target as Element|null;
- const button=target?.closest('button[data-tool-id]') as HTMLButtonElement|null;
- if(!button)return;
- const name=directText(button);
+window.addEventListener('dailytools:launch',e=>{
+ if(e.defaultPrevented)return;
+ const name=(e as CustomEvent<{label?:string}>).detail?.label?.trim();
  if(!name)return;
  alert(document.documentElement.lang==='en'?`Tool: ${name}`:`الأداة: ${name}`);
 });
