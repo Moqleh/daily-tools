@@ -9,3 +9,6 @@ html,body,#root{min-height:100%;background:#eaf7ff!important;color:var(--ink)!im
 .grid .card,.infoMenu button,.benefits>*{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease!important}
 @media(hover:hover){.grid .card:hover{transform:translateY(-4px)!important;box-shadow:0 18px 38px rgba(19,75,135,.12)!important;border-color:rgba(8,125,240,.22)!important}.infoMenu button:hover,.benefits>*:hover{transform:translateY(-2px)!important}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
+
+/* Preserve fast utility UX while tightening finish */
+.search:focus-within{border-color:rgba(8,125,240,.38)!important;box-shadow:0 0 0 4px rgba(8,125,240,.08),0 14px 34px rgba(17,79,145,.10)!important}.grid .card{border-radius:20px!important}.dailyBanner,.benefits,.infoMenu{overflow:hidden}.sectionTitle h2{letter-spacing:-.03em}.grid .card b{letter-spacing:-.01em}
