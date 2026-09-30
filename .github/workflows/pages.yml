@@ -21,16 +21,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
       - run: npm install --no-audit --no-fund
       - run: npm run build
       - name: Verify generated SEO artifact
         run: |
+          set -euo pipefail
           test -s dist/sitemap.xml
           test -s dist/robots.txt
           grep -Fq '<urlset' dist/sitemap.xml
           grep -Fq '/daily-tools/tools/' dist/sitemap.xml
+          touch dist/.nojekyll
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
@@ -39,5 +42,7 @@ jobs:
       - name: Verify published sitemap
         env:
           SITE_URL: ${{ steps.deployment.outputs.page_url }}
-        run: curl --fail --silent --show-error --location --retry 8 --output /tmp/sitemap.xml "${SITE_URL%/}/sitemap.xml"
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location --retry 8 --retry-all-errors --retry-delay 3 --output /tmp/sitemap.xml "${SITE_URL%/}/sitemap.xml"
           grep -Fq '/daily-tools/tools/' /tmp/sitemap.xml
