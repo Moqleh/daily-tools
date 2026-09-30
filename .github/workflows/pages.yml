@@ -24,10 +24,19 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - run: test -f dist/sitemap.xml && test -f dist/robots.txt
+      - name: Verify generated SEO artifact
+        run: |
+          test -s dist/sitemap.xml
+          test -s dist/robots.txt
+          grep -Fq '<urlset' dist/sitemap.xml
+          grep -Fq '/daily-tools/tools/' dist/sitemap.xml
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify published sitemap
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: curl --fail --silent --show-error --location --retry 8 "${SITE_URL%/}/sitemap.xml" | grep -Fq '/daily-tools/tools/'
