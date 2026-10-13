@@ -15,7 +15,7 @@ function addAd(){
   const ad=document.createElement('aside');
   ad.className='dt-ad-slot';
   ad.setAttribute('aria-label',ar()?'مساحة إعلانية':'Advertisement area');
-  ad.innerHTML=`<div><b>${ar()?'مساحة إعلانية':'Advertisement'}</b><small>${ar()?'مكان مخصص لإعلان مستقبلي':'Reserved for a future ad'}</small></div>`;
+  ad.innerHTML=`<a href="https://whatsapp.com/channel/0029Vb94n169mrGho0W9v63j" target="_blank" rel="noopener noreferrer" style="display:block;width:100%;padding:15px;border-radius:18px;background:linear-gradient(110deg,#087e58,#16bd7b);color:#fff;text-decoration:none"><b style="color:white;font-size:22px">💬 ملصقات متنوعة 🎉</b><span style="display:block;margin:8px">😂 مضحكة · 🤲 دينية · ❤️ مناسبات</span><strong style="display:inline-block;background:white;color:#087e58;padding:9px 20px;border-radius:30px">تابع القناة على واتساب ↗</strong></a>`;
   footer.parentElement?.insertBefore(ad,footer);
 }
 
