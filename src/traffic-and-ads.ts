@@ -5,7 +5,7 @@ const COUNTER_NAMESPACE='moqleh-github-io';
 const COUNTER_KEY='daily-tools-visits';
 
 const css=document.createElement('style');
-css.textContent=`.dt-ad-slot{box-sizing:border-box;width:min(94%,1180px);margin:22px auto;border-radius:22px;min-height:112px;border:1px dashed #9fc7e4;background:rgba(255,255,255,.72);display:grid;place-items:center;text-align:center;padding:18px;color:#6b8298}.dt-ad-slot b{display:block;color:#285779;font-size:15px;margin-bottom:4px}.dt-ad-slot small{font-size:12px}.dt-visit-counter{box-sizing:border-box;width:min(94%,1180px);margin:4px auto 20px;display:flex;align-items:center;justify-content:center;gap:9px;color:#6b8298;font-size:14px}.dt-visit-counter .eye{font-size:18px;line-height:1}.dt-visit-counter b{color:#285779;font-size:16px;font-variant-numeric:tabular-nums}@media(max-width:650px){.dt-ad-slot{min-height:96px;margin:16px auto}.dt-visit-counter{margin-bottom:16px}}`;
+css.textContent=`.dt-ad-slot{box-sizing:border-box;width:min(94%,1180px);margin:22px auto;border-radius:18px;min-height:0;border:0;background:transparent;display:block;text-align:center;padding:0;color:#6b8298;overflow:hidden}.dt-ad-slot b{display:block;color:#285779;font-size:15px;margin-bottom:4px}.dt-ad-slot small{font-size:12px}.dt-visit-counter{box-sizing:border-box;width:min(94%,1180px);margin:4px auto 20px;display:flex;align-items:center;justify-content:center;gap:9px;color:#6b8298;font-size:14px}.dt-visit-counter .eye{font-size:18px;line-height:1}.dt-visit-counter b{color:#285779;font-size:16px;font-variant-numeric:tabular-nums}@media(max-width:650px){.dt-ad-slot{min-height:96px;margin:16px auto}.dt-visit-counter{margin-bottom:16px}}`;
 document.head.appendChild(css);
 
 function addAd(){
@@ -15,7 +15,7 @@ function addAd(){
   const ad=document.createElement('aside');
   ad.className='dt-ad-slot';
   ad.setAttribute('aria-label',ar()?'مساحة إعلانية':'Advertisement area');
-  ad.innerHTML=`<a href="https://whatsapp.com/channel/0029Vb94n169mrGho0W9v63j" target="_blank" rel="noopener noreferrer" style="display:block;width:100%;padding:15px;border-radius:18px;background:linear-gradient(110deg,#087e58,#16bd7b);color:#fff;text-decoration:none"><b style="color:white;font-size:22px">💬 ملصقات متنوعة 🎉</b><span style="display:block;margin:8px">😂 مضحكة · 🤲 دينية · ❤️ مناسبات</span><strong style="display:inline-block;background:white;color:#087e58;padding:9px 20px;border-radius:30px">تابع القناة على واتساب ↗</strong></a>`;
+  ad.innerHTML=`<a href="https://whatsapp.com/channel/0029Vb94n169mrGho0W9v63j" target="_blank" rel="noopener noreferrer" aria-label="تابع قناة ملصقات متنوعة على واتساب" style="display:block;width:100%;text-decoration:none"><img src="./whatsapp-stickers-cover.jpg?v=20261015" alt="إعلان قناة ملصقات متنوعة على واتساب" style="display:block;width:100%;height:auto;border-radius:18px"></a>`;
   footer.parentElement?.insertBefore(ad,footer);
 }
 
