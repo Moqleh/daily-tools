@@ -15,7 +15,7 @@ function addAd(){
   const ad=document.createElement('aside');
   ad.className='dt-ad-slot';
   ad.setAttribute('aria-label',ar()?'مساحة إعلانية':'Advertisement area');
-  ad.innerHTML=`<a href="https://whatsapp.com/channel/0029Vb94n169mrGho0W9v63j" target="_blank" rel="noopener noreferrer" aria-label="تابع قناة ملصقات متنوعة على واتساب" style="display:block;width:100%;text-decoration:none"><img src="./whatsapp-stickers-cover.jpg?v=20261015" alt="إعلان قناة ملصقات متنوعة على واتساب" style="display:block;width:100%;height:auto;border-radius:18px"></a>`;
+  ad.innerHTML=`<a href="https://whatsapp.com/channel/0029Vb94n169mrGho0W9v63j" target="_blank" rel="noopener noreferrer" aria-label="تابع قناة ملصقات متنوعة على واتساب" style="display:block;width:100%;text-decoration:none"><img src="./whatsapp-stickers-cover.jpg?v=20261015" alt="إعلان قناة ملصقات متنوعة على واتساب" style="display:block;width:100%;height:auto;aspect-ratio:2/1;object-fit:contain;max-height:none;border-radius:18px"></a>`;
   footer.parentElement?.insertBefore(ad,footer);
 }
 
